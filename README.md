@@ -1,6 +1,6 @@
 # flutter_app_plug_test
 
-test new plugs.
+一些flutter三方插件的测试.
 
 ## Getting Started
 
