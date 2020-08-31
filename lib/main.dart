@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_plug_test/google_map_page.dart';
 
 import 'bluetooth_page.dart';
 import 'home_page.dart';
@@ -19,11 +20,12 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.cyan,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
         "blueToothTest": (context) => BlueToothPage(),
+        "googleMapTest":(context) =>GoogleMapPage(),
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), //注册首页路由
       },
     );

@@ -28,6 +28,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.pushNamed(context, "blueToothTest");
                   },
                 ),
+                RaisedButton(
+                  child: Text("googleMapPlug"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "googleMapTest");
+                  },
+                ),
               ],
             )
           ],
