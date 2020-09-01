@@ -25,6 +25,9 @@ dependencies:
     sdk: flutter
   flutter_blue: ^0.7.2
   google_maps_flutter: ^0.5.30
+#  location: ^3.0.2
+#  flutter_google_places: ^0.2.6
+  search_map_place: ^0.3.0
 
 
   # The following adds the Cupertino Icons font to your application.
