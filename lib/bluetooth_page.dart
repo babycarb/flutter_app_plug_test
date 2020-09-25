@@ -151,7 +151,11 @@ class _BlueToothPageState extends State<BlueToothPage> {
                         ),
                         child: Container(
                           height: 40,
-                          child: Text(scannedDeviceShowNamesList[index],overflow: TextOverflow.ellipsis,maxLines: 2,),
+                          child: Text(
+                            scannedDeviceShowNamesList[index],
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          ),
                         ),
                       );
                     },
@@ -170,7 +174,11 @@ class _BlueToothPageState extends State<BlueToothPage> {
                         ),
                         child: Container(
                           height: 40,
-                          child: Text(scannedDeviceShowIdsList[index],overflow: TextOverflow.ellipsis,maxLines: 2,),
+                          child: Text(
+                            scannedDeviceShowIdsList[index],
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          ),
                         ),
                       );
                     },

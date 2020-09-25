@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: {
         "blueToothTest": (context) => BlueToothPage(),
-        "googleMapTest":(context) =>GoogleMapPage(),
+        "googleMapTest": (context) => GoogleMapPage(),
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), //注册首页路由
       },
     );

@@ -24,10 +24,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_blue: ^0.7.2
-  google_maps_flutter: ^0.5.30
+  google_maps_flutter: ^0.5.33
 #  location: ^3.0.2
 #  flutter_google_places: ^0.2.6
   search_map_place: ^0.3.0
+  google_map_location_picker: ^3.3.5
+  google_maps_webservice: ^0.0.18
   http: ^0.12.2
   json_serializable: ^3.4.1
 

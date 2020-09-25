@@ -3,7 +3,9 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_map_location_picker/google_map_location_picker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_webservice/places.dart';
 import 'package:search_map_place/search_map_place.dart';
 // import 'package:location/location.dart' as LocationManager;
 
@@ -37,7 +39,6 @@ import 'package:search_map_place/search_map_place.dart';
 //   deniedForever
 // }
 
-
 class GoogleMapPage extends StatefulWidget {
   @override
   _GoogleMapPageState createState() => _GoogleMapPageState();
@@ -46,6 +47,8 @@ class GoogleMapPage extends StatefulWidget {
 class _GoogleMapPageState extends State<GoogleMapPage> {
   // GoogleMapController mapController;
   final homeScaffoldKey = GlobalKey<ScaffoldState>();
+  final places = new GoogleMapsPlaces(apiKey: "AIzaSyAPyQctQI4I_hKXicBWQJy1OZsQj0NR2pQ");
+  // LocationResult _pickedLocation;
   final Map<String, Marker> _markers = {};
   GoogleMapController mapController;
 
@@ -86,9 +89,22 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                 onMapCreated: _onMapCreated,
                 initialCameraPosition: _myLocation,
                 markers: _markers.values.toSet(),
-                onLongPress: (LatLng latLng) {
+                onLongPress: (LatLng latLng) async {
                   // you have latitude and longitude here
+//                   LocationResult result = await showLocationPicker(
+//                     context, "AIzaSyAPyQctQI4I_hKXicBWQJy1OZsQj0NR2pQ",
+//                     initialCenter: LatLng(31.1975844, 29.9598339),
+// //                      automaticallyAnimateToCurrentLocation: true,
+// //                      mapStylePath: 'assets/mapStyle.json',
+//                     myLocationButtonEnabled: true,
+//                     layersButtonEnabled: true,
+//                     // countries: ['AE', 'NG']
+//
+// //                      resultCardAlignment: Alignment.bottomCenter,
+//                   );
+                  PlacesSearchResponse response = await places.searchNearbyWithRadius(new Location(latLng.latitude, latLng.longitude), 500);
                   setState(() {
+                    // _pickedLocation = result;
                     _markers["テストタイトル"] = Marker(
                         markerId: MarkerId("1"),
                         position: latLng,
@@ -97,9 +113,12 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                         infoWindow:
                             InfoWindow(title: "テストタイトル", snippet: "テスト内容"));
                   });
-                  print("测试测试测试测试");
+                  print('経緯度値の確認！！！！！！！！！！！！！！！！！！！！！');
                   print(markerPosition.latitude);
                   print(markerPosition.longitude);
+                  print('位置情報の確認！！！！！！！！！！！！！！！！！！！！！');
+                  print(response.results);
+
                 },
                 myLocationEnabled: true,
                 myLocationButtonEnabled: true,
