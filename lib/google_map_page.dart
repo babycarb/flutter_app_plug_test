@@ -47,7 +47,9 @@ class GoogleMapPage extends StatefulWidget {
 class _GoogleMapPageState extends State<GoogleMapPage> {
   // GoogleMapController mapController;
   final homeScaffoldKey = GlobalKey<ScaffoldState>();
-  final places = new GoogleMapsPlaces(apiKey: "AIzaSyAPyQctQI4I_hKXicBWQJy1OZsQj0NR2pQ");
+  final places =
+      new GoogleMapsPlaces(apiKey: "AIzaSyA7RqhXhpfc5A026Z0kqX3Tb0wBaUpWJ4E");
+
   // LocationResult _pickedLocation;
   final Map<String, Marker> _markers = {};
   GoogleMapController mapController;
@@ -92,7 +94,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                 onLongPress: (LatLng latLng) async {
                   // you have latitude and longitude here
 //                   LocationResult result = await showLocationPicker(
-//                     context, "AIzaSyAPyQctQI4I_hKXicBWQJy1OZsQj0NR2pQ",
+//                     context, "AIzaSyA7RqhXhpfc5A026Z0kqX3Tb0wBaUpWJ4E",
 //                     initialCenter: LatLng(31.1975844, 29.9598339),
 // //                      automaticallyAnimateToCurrentLocation: true,
 // //                      mapStylePath: 'assets/mapStyle.json',
@@ -102,7 +104,9 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
 //
 // //                      resultCardAlignment: Alignment.bottomCenter,
 //                   );
-                  PlacesSearchResponse response = await places.searchNearbyWithRadius(new Location(latLng.latitude, latLng.longitude), 500);
+                  PlacesSearchResponse response =
+                      await places.searchNearbyWithRadius(
+                          new Location(latLng.latitude, latLng.longitude), 500);
                   setState(() {
                     // _pickedLocation = result;
                     _markers["テストタイトル"] = Marker(
@@ -111,14 +115,12 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                         icon: BitmapDescriptor.defaultMarkerWithHue(
                             BitmapDescriptor.hueRose),
                         infoWindow:
-                            InfoWindow(title: "テストタイトル", snippet: "テスト内容"));
+                            InfoWindow(title:response.results[0].name, snippet: response.results[1].name));
                   });
-                  print('経緯度値の確認！！！！！！！！！！！！！！！！！！！！！');
-                  print(markerPosition.latitude);
-                  print(markerPosition.longitude);
-                  print('位置情報の確認！！！！！！！！！！！！！！！！！！！！！');
-                  print(response.results);
-
+                  response.results.forEach((result) {
+                    print('位置情報の確認！！！！！！！！！！！！！！！！！！！！！');
+                    print(result.name);
+                  });
                 },
                 myLocationEnabled: true,
                 myLocationButtonEnabled: true,
