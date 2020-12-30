@@ -47,7 +47,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
 
   @override
   void initState() {
-    print("这是第三次git的测试提交，分支三");
+    print("这是第三次git的测试提交，分支三进行关闭");
     super.initState();
   }
 
