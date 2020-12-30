@@ -1,6 +1,5 @@
 import 'dart:async';
 // import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_map_location_picker/google_map_location_picker.dart';
@@ -49,6 +48,12 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
   final homeScaffoldKey = GlobalKey<ScaffoldState>();
   final places =
       new GoogleMapsPlaces(apiKey: "AIzaSyA7RqhXhpfc5A026Z0kqX3Tb0wBaUpWJ4E");
+
+  @override
+  void initState() {
+    print("这是git的测试提交，分支一");
+    super.initState();
+  }
 
   // LocationResult _pickedLocation;
   final Map<String, Marker> _markers = {};
@@ -114,8 +119,9 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                         position: latLng,
                         icon: BitmapDescriptor.defaultMarkerWithHue(
                             BitmapDescriptor.hueRose),
-                        infoWindow:
-                            InfoWindow(title:response.results[0].name, snippet: response.results[1].name));
+                        infoWindow: InfoWindow(
+                            title: response.results[0].name,
+                            snippet: response.results[1].name));
                   });
                   response.results.forEach((result) {
                     print('位置情報の確認！！！！！！！！！！！！！！！！！！！！！');
@@ -149,5 +155,10 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
             // )
           ],
         ));
+  }
+
+  InfoWindow newMethod(PlacesSearchResponse response) {
+    return InfoWindow(
+        title: response.results[0].name, snippet: response.results[1].name);
   }
 }
