@@ -51,7 +51,7 @@ class _BlueToothPageState extends State<BlueToothPage> {
       } else {
         String deviceName = "";
         if (scanResult.device.name == null || scanResult.device.name == "") {
-          deviceName = "此设备不可用";
+          deviceName = "此设备不能用";
         } else {
           deviceName = scanResult.device.name;
         }
